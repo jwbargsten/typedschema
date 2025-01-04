@@ -57,7 +57,7 @@ docs = [
 ]
 
 all = [
-    "typedschema[dev,build,docs]"
+    "pyspark-typedschema[dev,build,docs]"
 ]
 
 [tool.setuptools_scm]
