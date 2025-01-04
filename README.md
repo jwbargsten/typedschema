@@ -10,6 +10,7 @@ is not the goal of this library. Goals:
 * Enable schema column autocompletion in your editor
 
 ```python
+import pyspark.sql.functions as F
 from datetime import datetime, date
 from pyspark.sql.types import (
     DoubleType,
