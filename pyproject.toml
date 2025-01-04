@@ -1,0 +1,54 @@
+[tool.pytest.ini_options]
+pythonpath = ["src", "tests"]
+norecursedirs = [
+    "tests/testkit"
+]
+
+[tool.ruff]
+line-length = 111
+
+[build-system]
+requires = ["setuptools", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.coverage.paths]
+source = ["src"]
+
+[project]
+name = "pyspark-typedschema"
+dynamic = ["version"]
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Joachim Bargsten", email = "jw@bargsten.org" }]
+dependencies = [
+    "pyspark",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "pytest>=7",
+    "setuptools_scm",
+    "mypy",
+    "pytest-env",
+    "pytest-mock",
+]
+build = [
+    "build",
+    "twine",
+    "tomli",
+    "setuptools_scm"
+]
+docs = [
+    "sphinx",
+    "myst-parser",
+    "sphinx-sitemap",
+    "setuptools_scm",
+]
+
+all = [
+    "typedschema[dev,build,docs]"
+]
+
+[tool.setuptools_scm]
+write_to = "src/typedschema/_version.py"
