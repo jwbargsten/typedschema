@@ -6,6 +6,7 @@ from typing import (
     Iterator,
     Sequence,
 )
+from typing_extensions import Self
 
 from pyspark.sql.types import StructField, StructType
 from .structfield import sf_apply, sf_without_metadata, sf_with_lc_colname
@@ -63,7 +64,8 @@ class MetaSchema(type):
             "_attr_col_map": cols,
         }
         if dct["meta"] is not None and not isinstance(dct["meta"], dict):
-            raise TypeError("meta should be None or a dict")
+            meta = dct["meta"]
+            raise TypeError(f"meta should be None or a dict, was {type(meta)}")
 
         return type.__new__(cls, name, bases, dct)
 
@@ -121,7 +123,7 @@ class Schema(metaclass=MetaSchema):
     meta: dict[Hashable, Any]
     case_sensitive: bool
 
-    def __init__(self, *, case_sensitive: bool | None = None, meta=None | dict[Hashable, Any]):
+    def __init__(self, *, case_sensitive: bool | None = None, meta:None | dict[Hashable, Any] = None):
         self._colmap = {
             **{attr.lower(): col for attr, col in self._attr_col_map.items()},
             **{attr: col for attr, col in self._attr_col_map.items()},
@@ -135,7 +137,7 @@ class Schema(metaclass=MetaSchema):
             self.meta = meta
 
         if self.meta is not None and not isinstance(self.meta, dict):
-            raise TypeError("meta should be None or a dict")
+            raise TypeError(f"meta should be None or a dict (got {self.meta}")
 
     @cached_property
     def spark_schema(self) -> StructType:
@@ -201,7 +203,7 @@ class Schema(metaclass=MetaSchema):
         except AttributeError as ex:
             raise KeyError(key) from ex
 
-    def isequal(self, other: Sequence[StructField] | "Schema" | StructType, strict_null=True):
+    def isequal(self, other: Sequence[StructField] | Self | StructType, strict_null=True):
         other_cols = _unpack_schema(other)
         return sf_apply(
             self.fields,
@@ -211,10 +213,10 @@ class Schema(metaclass=MetaSchema):
             strict_null=strict_null,
         )
 
-    def __eq__(self, other: Sequence[StructField] | "Schema" | StructType):
+    def __eq__(self, other: Sequence[StructField] | Self | StructType):
         return self.isequal(other)
 
-    def issubset(self, other: Sequence[StructField] | "Schema" | StructType, strict_null=True):
+    def issubset(self, other: Sequence[StructField] | Self | StructType, strict_null=True):
         other_cols = _unpack_schema(other)
         return sf_apply(
             self.fields,
@@ -224,10 +226,10 @@ class Schema(metaclass=MetaSchema):
             strict_null=strict_null,
         )
 
-    def __le__(self, other: Sequence[StructField] | "Schema" | StructType):
+    def __le__(self, other: Sequence[StructField] | Self | StructType):
         return self.issubset(other)
 
-    def issuperset(self, other: Sequence[StructField] | "Schema" | StructType, strict_null=True):
+    def issuperset(self, other: Sequence[StructField] | Self | StructType, strict_null=True):
         other_cols = _unpack_schema(other)
         return sf_apply(
             self.fields,
@@ -237,7 +239,7 @@ class Schema(metaclass=MetaSchema):
             strict_null=strict_null,
         )
 
-    def __ge__(self, other: Sequence[StructField] | "Schema" | StructType):
+    def __ge__(self, other: Sequence[StructField] | Self | StructType):
         return self.issuperset(other)
 
     def contains(self, other: StructField | str):

@@ -1,9 +1,8 @@
 from typing import (
     Any,
-    Dict,
-    Optional,
     Hashable,
 )
+from typing_extensions import Self
 
 import pyspark.sql.functions as F
 from pyspark.sql.column import Column as PysparkColumn
@@ -27,8 +26,8 @@ class Column(str):
         cls,
         dtype: DataType,
         nullable: bool = False,
-        meta: Optional[Dict[str, Any]] = None,
-        name: Optional[str] = None,
+        meta: dict[str, Any] | None = None,
+        name: str | None = None,
     ):
         if name is None:
             name = ""
@@ -75,7 +74,7 @@ class Column(str):
         """
         return self.fcol.cast(dtype)
 
-    def alias(self, name: "Column" | str) -> PysparkColumn:
+    def alias(self, name: Self | str) -> PysparkColumn:
         """
         Alias this column.
 
