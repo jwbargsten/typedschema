@@ -18,11 +18,18 @@ source = ["src"]
 name = "pyspark-typedschema"
 dynamic = ["version"]
 readme = "README.md"
+description = "Define (typed) schemas for pyspark dataframes"
 requires-python = ">=3.10"
+license = { file = "LICENSE" }
 authors = [{ name = "Joachim Bargsten", email = "jw@bargsten.org" }]
+keywords = ["pyspark" ]
 dependencies = [
     "pyspark",
 ]
+
+[project.urls]
+homepage = "https://github.com/jwbargsten/typedschema"
+repository = "https://github.com/jwbargsten/typedschema"
 
 [project.optional-dependencies]
 dev = [
@@ -37,7 +44,10 @@ build = [
     "build",
     "twine",
     "tomli",
-    "setuptools_scm"
+    "setuptools_scm",
+    "check-manifest",
+    "check-wheel-contents",
+    "pyroma"
 ]
 docs = [
     "sphinx",

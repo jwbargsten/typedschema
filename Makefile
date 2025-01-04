@@ -50,5 +50,10 @@ docs:
 dist: clean build ## build the package distribution using twine
 	$(PY) -m twine check dist/*
 
+check-dist:
+	. $(VENV)/bin/activate && check-manifest --ignore src/typedschema/_version.py
+	. $(VENV)/bin/activate && check-wheel-contents
+	. $(VENV)/bin/activate && pyroma .
+
 publish: dist ## publish the package to pypi
 	$(PY) -m twine upload dist/*
