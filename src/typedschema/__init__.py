@@ -1,4 +1,5 @@
 from typedschema.column import Column
 from typedschema.schema import Schema, diff_schemas
+from typedschema.codegen import generate_schema_def
 
-__all__ = ["Column", "Schema", "diff_schemas"]
+__all__ = ["Column", "Schema", "diff_schemas", "generate_schema_def"]

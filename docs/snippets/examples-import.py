@@ -9,7 +9,7 @@ from pyspark.sql.types import (
     TimestampType,
 )
 
-from typedschema import Column, Schema, diff_schemas
+from typedschema import Column, Schema, diff_schemas, generate_schema_def
 
 
 class MySchema(Schema):

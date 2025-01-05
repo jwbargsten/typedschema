@@ -1,11 +1,14 @@
 from typing import Sequence
 from pyspark.sql.types import StructField, StructType
+from pyspark.sql import DataFrame
 
 from .schema import _unpack_schema, RESERVED_FIELDS, Schema
 from .string import camel_to_snake
 
 
-def as_named_schema_class_def(s: Sequence[StructField] | StructType | Schema, name="UnnamedSchema"):
+def generate_schema_def(
+    s: Sequence[StructField] | StructType | Schema | DataFrame, name="UnnamedSchema"
+):
     """
     Generate Python code for a Schema from a spark/sequence of structfields/Schema
 

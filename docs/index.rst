@@ -1,10 +1,6 @@
 pyspark-typedschema documentation
 =================================
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Contents:
-
 This is minimally intrusive library to type or annotate pyspark data frames.
 
 There are existing projects which try to change how you interact with pyspark, but this
@@ -25,6 +21,9 @@ Installation
 
 Tour
 ----
+
+Definition
+^^^^^^^^^^
 
 You define a new schema by inheriting from :class:`typedschema.Schema`:
 
@@ -55,6 +54,9 @@ If needed, you can also get a :class:`pyspark.sql.column.Column` object using
 
 .. literalinclude:: snippets/fcol.show.txt
    :language: none
+
+Comparing Schemas
+^^^^^^^^^^^^^^^^^
 
 I can test schema equality using `Python's set operations <https://docs.python.org/3/library/stdtypes.html#set>`_.
 
@@ -99,16 +101,30 @@ Often nullability is not so important, you can disable it via a function param
 .. literalinclude:: snippets/examples-set-ops-nullable.py
    :language: python
 
+Code Generation
+^^^^^^^^^^^^^^^
+
+Most developers are relatively lazy, so typedschema has the functionality to
+generate a class definiton from an existing schema or data frame:
+
+.. literalinclude:: snippets/examples-codegen.py
+   :language: python
+
+will output
+
+.. literalinclude:: snippets/examples-class-def.py
+   :language: python
+
 Related Projects
 ----------------
 
 * `GitHub - kaiko-ai/typedspark: Column-wise type annotations for pyspark DataFrames <https://github.com/kaiko-ai/typedspark>`_
 * `GitHub - getyourguide/TypedPyspark: Type-annotate your spark dataframes and validate them <https://github.com/getyourguide/TypedPyspark>`_
 
-API Documentation
------------------
+API Reference
+-------------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    typedschema

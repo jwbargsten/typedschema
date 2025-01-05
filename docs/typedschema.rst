@@ -1,8 +1,5 @@
-API reference
-=============
-
-Module contents
----------------
+typedschema API
+===============
 
 .. automodule:: typedschema
    :members:

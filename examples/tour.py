@@ -13,7 +13,7 @@ from pyspark.sql.types import (
     TimestampType,
 )
 
-from typedschema import Column, Schema, diff_schemas
+from typedschema import Column, Schema, diff_schemas, generate_schema_def
 
 
 class MySchema(Schema):
@@ -133,3 +133,10 @@ myschema.issubset(df3.schema, strict_null=False) # True, nullable ignored
 # :xns
 print("issubset (nonstrict):", myschema.issubset(df3.schema, strict_null=False))
 print("issubset:", myschema <= df3.schema)
+
+# :snx codegen
+class_def = generate_schema_def(df3, name="CustomerDataSchema")
+print(class_def)
+# :xns
+Path("docs/snippets//examples-class-def.py").write_text(class_def)
+
