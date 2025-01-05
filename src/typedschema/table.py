@@ -1,19 +1,16 @@
 import re
 from dataclasses import FrozenInstanceError
+from typing_extensions import Self
 
 
 class FQTN(str):
     """Short for Fully Qualified Table Name. Simplify table name handling.
 
-    Parameters
-    ----------
-    name : str
-        The table name
-    ns : str
-        The namespace aka schema aka keyspace (and sometimes aka database).
+    :param ns: The namespace aka schema aka keyspace (and sometimes aka database).
+    :param name: The table name
     """
 
-    def __new__(cls, name: str, ns: str):
+    def __new__(cls, ns: str, name: str):
         if ns is None:
             raise ValueError("namespace is None")
         if name is None:
@@ -35,23 +32,21 @@ class FQTN(str):
         raise FrozenInstanceError(f"cannot assign to field {name!r}")
 
     @classmethod
-    def from_any(cls, fqtn):
-        if isinstance(fqtn, FQTN):
-            return cls(fqtn.name, fqtn.ns)
-        return cls.from_str(str(fqtn))
+    def of(cls, table_name: str | Self):
+        if isinstance(table_name, FQTN):
+            return cls(table_name.ns, table_name.name)
 
-    @classmethod
-    def from_str(cls, tableName: str):
-        if not re.search(r"^\w+\.\w+$", tableName):
-            raise ValueError(f'Could not derive namespace and table from "{tableName}".')
+        table_name = str(table_name)
+        if not re.search(r"^\w+\.\w+$", table_name):
+            raise ValueError(f'Could not derive namespace and table from "{table_name}".')
 
-        ns, name = tableName.split(".", maxsplit=1)
+        ns, name = table_name.split(".", maxsplit=1)
         if not (ns and name):
-            raise ValueError(f'Could not derive namespace and table from "{tableName}".')
+            raise ValueError(f'Could not derive namespace and table from "{table_name}".')
         return cls(ns, name)
 
     @property
-    def namespace(self):
+    def namespace(self) -> str:
         return self.ns
 
     def __repr__(self):

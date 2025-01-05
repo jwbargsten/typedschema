@@ -11,6 +11,32 @@ is not the goal of this library. Goals:
 * Enable schema column autocompletion in your editor
 * Re-use existing stuff, such as `StructField`, from pyspark
 
+In pyspark you have 3 ways of referencing a column:
+
+.. code-block:: python
+
+   df.col
+   df['col']
+   F.col('col')
+
+All have their `advantages and disadvantages
+<https://stackoverflow.com/questions/55105363/pyspark-dataframe-column-reference-df-col-vs-dfcol-vs-f-colcol>`_,
+but a consistent way of dealing with column names, pyspark columns and schemas
+in general feels patchy. typedschema tries to make it a bit more natural.
+
+Define a schema
+
+.. literalinclude:: snippets/examples-01-teaser.py
+   :language: python
+
+Because ``MySchema`` is a normal Python class, it can be auto-completed by
+almost all editors. Additionally ``myschema.name`` is also a string. You can
+use it more naturally:
+
+.. literalinclude:: snippets/examples-02-teaser.py
+   :language: python
+
+
 Installation
 ------------
 

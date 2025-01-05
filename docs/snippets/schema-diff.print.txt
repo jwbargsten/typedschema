@@ -1,6 +1,6 @@
 - StructField('b', DoubleType(), False) None
 + None StructField('z', DoubleType(), True)
-! StructField('a', LongType(), False) StructField('a', LongType(), True)
 ! StructField('e', TimestampType(), False) StructField('e', TimestampType(), True)
 ! StructField('c', StringType(), False) StructField('c', StringType(), True)
+! StructField('a', LongType(), False) StructField('a', LongType(), True)
 ! StructField('d', DateType(), False) StructField('d', DateType(), True)
