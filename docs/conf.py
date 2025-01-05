@@ -36,7 +36,7 @@ html_theme_options = {
         }
     ],
     "analytics": {
-        "plausible_analytics_domain": "jwbargsten.github.io",
+        "plausible_analytics_domain": "jwbargsten.github.io/typedschema",
         "plausible_analytics_url": "https://plausible.io/js/script.js",
     },
     "use_edit_page_button": False,
