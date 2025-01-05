@@ -14,6 +14,14 @@ is not the goal of this library. Goals:
 * Supply some utility functions to test if the DataFrame adheres to a predefined schema.
 * Enable schema column autocompletion in your editor
 
+Installation
+------------
+
+.. code-block:: sh
+
+   pip install pyspark-typedschema
+
+
 Tour
 ----
 
