@@ -179,6 +179,8 @@ def test_set_ops():
     ]
     assert f in s
     assert sa <= s
+    assert s >= sa
+    assert not sa >= s
     assert not sb <= s
     assert not s <= sa
     assert sa <= cols1

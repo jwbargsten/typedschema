@@ -297,7 +297,7 @@ def diff_schemas(
             no difference
 
         ``>``
-            the col is present in a and b, but the data type differes
+            the col is present in a and b, but the data type differs
 
         ``!``
             the col is present in a and b, but the nullable constraint differs
