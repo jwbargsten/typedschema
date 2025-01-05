@@ -6,4 +6,4 @@ df2 = spark.createDataFrame(
     ],
     schema="a long, z double, c string, d date, e timestamp",
 )
-myschema >= df2.schema  # False, col b missing
+myschema <= df2.schema  # False, col b missing

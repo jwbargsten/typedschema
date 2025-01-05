@@ -6,5 +6,5 @@ df3 = spark.createDataFrame(
     ],
     schema="a long, b double, c string, d date, e timestamp, f long",
 )
-myschema >= df3.schema # False, differences in nullable
+myschema <= df3.schema # False, differences in nullable
 myschema.issubset(df3.schema, strict_null=False) # True, nullable ignored

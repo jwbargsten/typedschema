@@ -51,7 +51,7 @@ I can test schema equality using `Python's set operations <https://docs.python.o
 
 Implemented are ``issubset``, ``issuperset``, ``isequal`` and ``contains``.
 
-.. literalinclude:: snippets/examples-set-ops-no-superset-missing-col.py
+.. literalinclude:: snippets/examples-set-ops-no-subset-missing-col.py
    :language: python
 
 .. attention::

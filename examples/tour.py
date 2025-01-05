@@ -87,7 +87,7 @@ df1.show()
 # :xns
 show_to_file(df1, "docs/snippets/fcol.show.txt")
 
-# :snx set-ops-no-superset-missing-col
+# :snx set-ops-no-subset-missing-col
 df2 = spark.createDataFrame(
     [
         (1, 2.0, "string1", date(2000, 1, 1), datetime(2000, 1, 1, 12, 0)),
@@ -96,7 +96,7 @@ df2 = spark.createDataFrame(
     ],
     schema="a long, z double, c string, d date, e timestamp",
 )
-myschema >= df2.schema  # False, col b missing
+myschema <= df2.schema  # False, col b missing
 # :xns
 
 # :snx schema-diff
@@ -128,6 +128,8 @@ df3 = spark.createDataFrame(
     ],
     schema="a long, b double, c string, d date, e timestamp, f long",
 )
-myschema >= df3.schema # False, differences in nullable
+myschema <= df3.schema # False, differences in nullable
 myschema.issubset(df3.schema, strict_null=False) # True, nullable ignored
 # :xns
+print("issubset (nonstrict):", myschema.issubset(df3.schema, strict_null=False))
+print("issubset:", myschema <= df3.schema)

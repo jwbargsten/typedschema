@@ -293,7 +293,7 @@ def diff_schemas(
         ``-``
             a has this column extra, it is missing in b
 
-        ```(space)```
+        ``(space)``
             no difference
 
         ``>``
