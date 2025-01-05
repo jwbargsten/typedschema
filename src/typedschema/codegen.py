@@ -1,14 +1,13 @@
 from typing import Sequence
 from pyspark.sql.types import StructField, StructType
 from pyspark.sql import DataFrame
+import re
 
 from .schema import _unpack_schema, RESERVED_FIELDS, Schema
 from .string import camel_to_snake
 
 
-def generate_schema_def(
-    s: Sequence[StructField] | StructType | Schema | DataFrame, name="UnnamedSchema"
-):
+def generate_schema_def(s: Sequence[StructField] | StructType | Schema | DataFrame, name="UnnamedSchema"):
     """
     Generate Python code for a Schema from a spark/sequence of structfields/Schema
 
@@ -27,6 +26,9 @@ def generate_schema_def(
         if f.name in RESERVED_FIELDS:
             attr_name = f"{f.name}_"
             args.append(f"name={repr(f.name)}")
+        elif not re.search(r"^\w+$", f.name):
+            attr_name = re.sub(r"\W", "_", f.name)
+            args.append(f"name={repr(f.name)}")
         else:
             attr_name = f.name
 
@@ -34,4 +36,4 @@ def generate_schema_def(
     var_name = camel_to_snake(name)
     res.append(f"{var_name} = {name}()")
 
-    return "\n".join(res)
+    return "\n".join(res) + "\n"
