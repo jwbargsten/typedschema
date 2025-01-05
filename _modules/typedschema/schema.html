@@ -1,0 +1,746 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>typedschema.schema &#8212; typedschema</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=1fd71caa"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-domain="jwbargsten.github.io/typedschema" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/typedschema/schema';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.0.6" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">typedschema</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../typedschema.html">
+    typedschema API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jwbargsten/typedschema" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../typedschema.html">
+    typedschema API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jwbargsten/typedschema" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">typedschema.schema</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for typedschema.schema</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">cached_property</span>
+<span class="kn">from</span> <span class="nn">.column</span> <span class="kn">import</span> <span class="n">Column</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">Hashable</span><span class="p">,</span>
+    <span class="n">Iterator</span><span class="p">,</span>
+    <span class="n">Sequence</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Self</span>
+
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StructField</span><span class="p">,</span> <span class="n">StructType</span>
+<span class="kn">from</span> <span class="nn">.structfield</span> <span class="kn">import</span> <span class="n">sf_apply</span><span class="p">,</span> <span class="n">sf_without_metadata</span><span class="p">,</span> <span class="n">sf_with_lc_colname</span>
+
+
+<span class="k">def</span> <span class="nf">_unpack_field</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Column</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">field</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">StructField</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">f</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I can only process Column and StructField, got </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_unpack_schema</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">Schema</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">fields</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">StructType</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">fields</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">fields</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">StructField</span><span class="p">)</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;supplied schema type is not supported&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fields</span>
+
+
+<span class="n">RESERVED_FIELDS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;cols&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;spark_schema&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;table_name&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dtypes&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;isequal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;issubset&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;contains&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;issuperset&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;case_sensitive&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">MetaSchema</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">dct</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">_with_name_if_unnamed</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dct</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">Column</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">RESERVED_FIELDS</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;column &#39;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&#39; is a reserved field, use ``</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">_ = Column(..., name=</span><span class="se">\&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">)`` as workaround&quot;</span>
+                <span class="p">)</span>
+        <span class="n">dct</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;case_sensitive&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">dct</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">cols</span><span class="p">,</span>
+            <span class="s2">&quot;cols&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">cols</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+            <span class="s2">&quot;_attr_col_map&quot;</span><span class="p">:</span> <span class="n">cols</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">dct</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">meta</span> <span class="o">=</span> <span class="n">dct</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">]</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;meta should be None or a dict, was </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Schema">
+<a class="viewcode-back" href="../../typedschema.html#typedschema.Schema">[docs]</a>
+<span class="k">class</span> <span class="nc">Schema</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">MetaSchema</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A typed schema is a schema definition that has the</span>
+<span class="sd">    field/column names as named attributes of the class definition.</span>
+
+<span class="sd">    :param case_sensitive: are the columns/fields case sensitive?</span>
+<span class="sd">    :param meta: key-value entries that are related to the schema. An example would be the table name.</span>
+<span class="sd">        Actually, because the table name is needed quite frequently, the ``self.table_name``</span>
+<span class="sd">        property is a shortcut for ``meta[&quot;name&quot;]``.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">    &gt;&gt;&gt; from pyspark.sql.types import StructField, StringType, StringType</span>
+<span class="sd">    &gt;&gt;&gt; from typedschema import Schema, Column</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; class ExampleSchema(Schema):</span>
+<span class="sd">    ...     # syntax is Column(DATA_TYPE, IS_NULLABLE)</span>
+<span class="sd">    ...     name = Column(StringType(), True)</span>
+<span class="sd">    ...     city = Column(StringType(), True)</span>
+<span class="sd">    ...     street = Column(StringType(), True)</span>
+<span class="sd">    ...     # a name clash: the column is named &quot;cols&quot; but &quot;cols&quot; is also a reserved field</span>
+<span class="sd">    ...     # (see `typedschema.RESERVED_FIELDS` for list)</span>
+<span class="sd">    ...     # you can use a &quot;_&quot; as a workaround for the field and supply the name as arg to Column</span>
+<span class="sd">    ...     cols_ = Column(StringType(), True, name=&quot;cols&quot;)</span>
+<span class="sd">    ...     # meta is a dict. You can dump whatever you think is useful</span>
+<span class="sd">    ...     # (you can also skip it, of course)</span>
+<span class="sd">    ...     meta = {&quot;default_values&quot;: {&quot;name&quot;: &quot;NA&quot;}, &quot;name&quot;: &quot;customers&quot;}</span>
+<span class="sd">    ...     # the schema fields are considered case-insensitive</span>
+<span class="sd">    ...     # in all functions, such as equality tests</span>
+<span class="sd">    ...     # (case_sensitive is False by default)</span>
+<span class="sd">    ...     case_sensitive = False</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # we have to create a object to use the full functionality</span>
+<span class="sd">    &gt;&gt;&gt; # (for e.g. testing schema equality with `==`)</span>
+<span class="sd">    &gt;&gt;&gt; exs = ExampleSchema()</span>
+<span class="sd">    &gt;&gt;&gt; exs.table_name</span>
+<span class="sd">    &#39;customers&#39;</span>
+<span class="sd">    &gt;&gt;&gt; exs.cols</span>
+<span class="sd">    [&#39;name&#39;, &#39;city&#39;, &#39;street&#39;, &#39;cols&#39;]</span>
+<span class="sd">    &gt;&gt;&gt; [c.field for c in exs.cols]</span>
+<span class="sd">    [</span>
+<span class="sd">    StructField(&#39;name&#39;, StringType(), True),</span>
+<span class="sd">    StructField(&#39;city&#39;, StringType(), True),</span>
+<span class="sd">    StructField(&#39;street&#39;, StringType(), True),</span>
+<span class="sd">    StructField(&#39;cols&#39;, StringType(), True)</span>
+<span class="sd">    ]</span>
+<span class="sd">    &gt;&gt;&gt; exs.city.field</span>
+<span class="sd">    StructField(&#39;city&#39;, StringType(), True)</span>
+<span class="sd">    &gt;&gt;&gt; exs.city</span>
+<span class="sd">    &#39;city&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">meta</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="n">case_sensitive</span><span class="p">:</span> <span class="nb">bool</span>
+
+<div class="viewcode-block" id="Schema.__init__">
+<a class="viewcode-back" href="../../typedschema.html#typedschema.Schema.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">meta</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_colmap</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="o">**</span><span class="p">{</span><span class="n">attr</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">col</span> <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attr_col_map</span><span class="o">.</span><span class="n">items</span><span class="p">()},</span>
+            <span class="o">**</span><span class="p">{</span><span class="n">attr</span><span class="p">:</span> <span class="n">col</span> <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attr_col_map</span><span class="o">.</span><span class="n">items</span><span class="p">()},</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fieldmap</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="p">{</span><span class="n">f</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">},</span> <span class="o">**</span><span class="p">{</span><span class="n">f</span><span class="p">:</span> <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">}}</span>
+
+        <span class="k">if</span> <span class="n">case_sensitive</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">case_sensitive</span> <span class="o">=</span> <span class="n">case_sensitive</span>
+
+        <span class="k">if</span> <span class="n">meta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="n">meta</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;meta should be None or a dict (got </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span> <span class="nf">spark_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StructType</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The spark schema</span>
+
+<span class="sd">        Representation of a spark schema that can be used to construct DataFrames.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">StructType</span><span class="p">([</span><span class="n">c</span><span class="o">.</span><span class="n">field</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">])</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fields</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">StructField</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;the list of columns/fields.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">spark_schema</span><span class="o">.</span><span class="n">fields</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">table_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;returns ``meta[&quot;name&quot;]``.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dtypes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Data types of the columns</span>
+
+<span class="sd">        :return:</span>
+<span class="sd">            a list of (column name, data type) tuples</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[(</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">c</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">simpleString</span><span class="p">())</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Schema.get_field">
+<a class="viewcode-back" href="../../typedschema.html#typedschema.Schema.get_field">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StructField</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">case_sensitive</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">spark_schema</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">spark_schema</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_fieldmap</span><span class="p">[</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]]</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Column</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Column</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;case_sensitive&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;case_sensitive not defined&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">case_sensitive</span><span class="p">:</span>
+            <span class="c1"># __getattr__ is only called if the class attribute was not found earlier.</span>
+            <span class="c1"># Which means that this class attribute does not exist. If we are case-sensitive,</span>
+            <span class="c1"># then the col is indeed not part of the class.</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Column </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> does not exist&quot;</span><span class="p">)</span>
+
+        <span class="n">name_lc</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">name_lc</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colmap</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Column </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (or </span><span class="si">{</span><span class="n">name_lc</span><span class="si">}</span><span class="s2">) does not exist&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colmap</span><span class="p">[</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Column</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">ex</span>
+
+<div class="viewcode-block" id="Schema.isequal">
+<a class="viewcode-back" href="../../typedschema.html#typedschema.Schema.isequal">[docs]</a>
+    <span class="k">def</span> <span class="nf">isequal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StructField</span><span class="p">]</span> <span class="o">|</span> <span class="n">Self</span> <span class="o">|</span> <span class="n">StructType</span> <span class="o">|</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">strict_null</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">other_cols</span> <span class="o">=</span> <span class="n">_unpack_schema</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sf_apply</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">,</span>
+            <span class="n">other_cols</span><span class="p">,</span>
+            <span class="k">lambda</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">:</span> <span class="n">xs</span> <span class="o">==</span> <span class="n">ys</span><span class="p">,</span>
+            <span class="n">case_sensitive</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">case_sensitive</span><span class="p">,</span>
+            <span class="n">strict_null</span><span class="o">=</span><span class="n">strict_null</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StructField</span><span class="p">]</span> <span class="o">|</span> <span class="n">Self</span> <span class="o">|</span> <span class="n">StructType</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">isequal</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Schema.issubset">
+<a class="viewcode-back" href="../../typedschema.html#typedschema.Schema.issubset">[docs]</a>
+    <span class="k">def</span> <span class="nf">issubset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StructField</span><span class="p">]</span> <span class="o">|</span> <span class="n">Self</span> <span class="o">|</span> <span class="n">StructType</span> <span class="o">|</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">strict_null</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">other_cols</span> <span class="o">=</span> <span class="n">_unpack_schema</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sf_apply</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">,</span>
+            <span class="n">other_cols</span><span class="p">,</span>
+            <span class="k">lambda</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">:</span> <span class="n">xs</span> <span class="o">&lt;=</span> <span class="n">ys</span><span class="p">,</span>
+            <span class="n">case_sensitive</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">case_sensitive</span><span class="p">,</span>
+            <span class="n">strict_null</span><span class="o">=</span><span class="n">strict_null</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StructField</span><span class="p">]</span> <span class="o">|</span> <span class="n">Self</span> <span class="o">|</span> <span class="n">StructType</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Schema.issuperset">
+<a class="viewcode-back" href="../../typedschema.html#typedschema.Schema.issuperset">[docs]</a>
+    <span class="k">def</span> <span class="nf">issuperset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StructField</span><span class="p">]</span> <span class="o">|</span> <span class="n">Self</span> <span class="o">|</span> <span class="n">StructType</span> <span class="o">|</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">strict_null</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">other_cols</span> <span class="o">=</span> <span class="n">_unpack_schema</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sf_apply</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">,</span>
+            <span class="n">other_cols</span><span class="p">,</span>
+            <span class="k">lambda</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">:</span> <span class="n">xs</span> <span class="o">&gt;=</span> <span class="n">ys</span><span class="p">,</span>
+            <span class="n">case_sensitive</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">case_sensitive</span><span class="p">,</span>
+            <span class="n">strict_null</span><span class="o">=</span><span class="n">strict_null</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StructField</span><span class="p">]</span> <span class="o">|</span> <span class="n">Self</span> <span class="o">|</span> <span class="n">StructType</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Schema.contains">
+<a class="viewcode-back" href="../../typedschema.html#typedschema.Schema.contains">[docs]</a>
+    <span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">StructField</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">StructField</span><span class="p">):</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="n">other</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Column</span><span class="p">):</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">field</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_field</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">field</span> <span class="o">=</span> <span class="n">sf_without_metadata</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+        <span class="n">ref_fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">sf_without_metadata</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">case_sensitive</span><span class="p">:</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="n">sf_with_lc_colname</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">sf_with_lc_colname</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">==</span> <span class="n">field</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ref_fields</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="n">field</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ref_fields</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">StructField</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="diff_schemas">
+<a class="viewcode-back" href="../../typedschema.html#typedschema.diff_schemas">[docs]</a>
+<span class="k">def</span> <span class="nf">diff_schemas</span><span class="p">(</span>
+    <span class="n">a</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StructField</span><span class="p">]</span> <span class="o">|</span> <span class="n">StructType</span> <span class="o">|</span> <span class="n">Schema</span> <span class="o">|</span> <span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">b</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">StructField</span><span class="p">]</span> <span class="o">|</span> <span class="n">StructType</span> <span class="o">|</span> <span class="n">Schema</span> <span class="o">|</span> <span class="n">DataFrame</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Diff two schemas</span>
+
+<span class="sd">    :param a: the first schema</span>
+<span class="sd">    :param b: the second schema</span>
+<span class="sd">    :return: a list of tuples</span>
+<span class="sd">        each tuple has the structure: (diffType, colname of a, colname of b)</span>
+<span class="sd">        diffType can be</span>
+
+<span class="sd">        ``+``</span>
+<span class="sd">            a is missing this col, b has it extra</span>
+
+<span class="sd">        ``-``</span>
+<span class="sd">            a has this column extra, it is missing in b</span>
+
+<span class="sd">        ``(space)``</span>
+<span class="sd">            no difference</span>
+
+<span class="sd">        ``&gt;``</span>
+<span class="sd">            the col is present in a and b, but the data type differs</span>
+
+<span class="sd">        ``!``</span>
+<span class="sd">            the col is present in a and b, but the nullable constraint differs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a_fields</span><span class="p">,</span> <span class="n">b_fields</span> <span class="o">=</span> <span class="n">sf_apply</span><span class="p">(</span><span class="n">_unpack_schema</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">_unpack_schema</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">:</span> <span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">))</span>
+
+    <span class="n">a_cols</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">a_fields</span><span class="p">}</span>
+    <span class="n">b_cols</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">b_fields</span><span class="p">}</span>
+    <span class="n">a_cols_ks</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">a_cols</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">b_cols_ks</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">b_cols</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="n">a_cols_uniq</span> <span class="o">=</span> <span class="n">a_cols_ks</span> <span class="o">-</span> <span class="n">b_cols_ks</span>
+    <span class="n">b_cols_uniq</span> <span class="o">=</span> <span class="n">b_cols_ks</span> <span class="o">-</span> <span class="n">a_cols_ks</span>
+    <span class="n">common</span> <span class="o">=</span> <span class="n">a_cols_ks</span> <span class="o">&amp;</span> <span class="n">b_cols_ks</span>
+
+    <span class="n">common_diff</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">common</span><span class="p">):</span>
+        <span class="n">a_col</span> <span class="o">=</span> <span class="n">a_cols</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+        <span class="n">b_col</span> <span class="o">=</span> <span class="n">b_cols</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+        <span class="n">diff_char</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span>
+        <span class="k">if</span> <span class="n">a_col</span><span class="o">.</span><span class="n">dataType</span> <span class="o">!=</span> <span class="n">b_col</span><span class="o">.</span><span class="n">dataType</span><span class="p">:</span>
+            <span class="n">diff_char</span> <span class="o">=</span> <span class="s2">&quot;&gt;&quot;</span>
+        <span class="k">elif</span> <span class="n">a_col</span><span class="o">.</span><span class="n">nullable</span> <span class="o">!=</span> <span class="n">b_col</span><span class="o">.</span><span class="n">nullable</span><span class="p">:</span>
+            <span class="n">diff_char</span> <span class="o">=</span> <span class="s2">&quot;!&quot;</span>
+        <span class="n">common_diff</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">diff_char</span><span class="p">,</span> <span class="n">a_col</span><span class="p">,</span> <span class="n">b_col</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">[(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">a_cols</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a_cols_uniq</span><span class="p">)]</span>
+        <span class="o">+</span> <span class="p">[(</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">b_cols</span><span class="p">[</span><span class="n">c</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">b_cols_uniq</span><span class="p">)]</span>
+        <span class="o">+</span> <span class="n">common_diff</span>
+    <span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Joachim Bargsten.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
