@@ -288,5 +288,5 @@ def test_with_spark(spark):
 
     s = TestSchema()
     assert s == df.schema
-    res_df = df.select(F.upper(s.a.fcol).alias("name"), s.b).where((s.b.fcol == F.lit(1)) | s.b.fcol.isNull())
+    res_df = df.select(F.upper(s.a.col).alias("name"), s.b).where((s.b.col == F.lit(1)) | s.b.col.isNull())
     df_assert_equal(res_df.collect(), [Row(name="ALICE", B=1), Row(name="KEN", B=None)])

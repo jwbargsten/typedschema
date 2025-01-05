@@ -44,15 +44,15 @@ Now you can use ``myschema`` to generate a :class:`~pyspark.sql.DataFrame`:
 
 A :class:`~typedschema.Column` is also a string, so it behaves like a string.
 If needed, you can also get a :class:`pyspark.sql.column.Column` object using
-``.fcol`` or ``.c``.
+``.col`` or ``.c``.
 
 .. literalinclude:: snippets/examples-col-is-string.py
    :language: python
 
-.. literalinclude:: snippets/examples-fcol-ops.py
+.. literalinclude:: snippets/examples-col-ops.py
    :language: python
 
-.. literalinclude:: snippets/fcol.show.txt
+.. literalinclude:: snippets/col.show.txt
    :language: none
 
 Comparing Schemas

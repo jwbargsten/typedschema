@@ -49,6 +49,6 @@ def test_example(spark):
     assert myschema >= df2.schema
     assert myschema.issuperset(df2.schema)
     df1.select(myschema.a).show()
-    df1.select(F.upper(myschema.a.fcol)).show()
+    df1.select(F.upper(myschema.a.col)).show()
     # instead of
     df1.select(F.upper(F.col("a"))).show()

@@ -22,8 +22,8 @@ class Column(str):
         name = Column(StringType(), nullable=True)
 
         F.col(name) # works like a string
-        name.fcol   # also works
-        name.c      # alias for name.fcol -> for the lazy ones
+        name.col    # also works
+        name.c      # alias for name.col -> for the lazy ones
 
     Common PySpark functions, such as :func:`~Column.cast` or :func:`~Column.dtype`, are aliased.
 
@@ -74,7 +74,7 @@ class Column(str):
         return cls(field.dataType, nullable=field.nullable, meta=field.metadata, name=field.name)
 
     @property
-    def fcol(self) -> PysparkColumn:
+    def col(self) -> PysparkColumn:
         """
         Transform the column to a pyspark column
         """
@@ -82,8 +82,8 @@ class Column(str):
 
     @property
     def c(self) -> PysparkColumn:
-        """Alias for as fcol"""
-        return self.fcol
+        """Alias for as col"""
+        return self.col
 
     def cast(self, dtype: str | DataType) -> PysparkColumn:
         """
@@ -91,7 +91,7 @@ class Column(str):
 
         Shortcut for F.col().cast()
         """
-        return self.fcol.cast(dtype)
+        return self.col.cast(dtype)
 
     def alias(self, name: Self | str) -> PysparkColumn:
         """
@@ -99,7 +99,7 @@ class Column(str):
 
         Shortcut for F.col().alias()
         """
-        return self.fcol.alias(name)
+        return self.col.alias(name)
 
     @property
     def name(self) -> str:

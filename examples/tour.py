@@ -73,19 +73,19 @@ schema_to_file(df1, "docs/snippets/create-df.schema.txt")
 # :snx col-is-string
 df1.select(F.col(myschema.a)).show()
 df1.select(myschema.a).show()
-df1.select(myschema.a.fcol).show()
+df1.select(myschema.a.col).show()
 df1.select(myschema.a.c).show()
 # :xns
 
-# :snx fcol-ops
+# :snx col-ops
 df1 = (
     spark.range(3)
     .withColumnsRenamed({"id": myschema.a})
-    .withColumn(myschema.b, F.upper(F.concat(myschema.a.fcol, F.lit("_"), myschema.a.fcol)))
+    .withColumn(myschema.b, F.upper(F.concat(myschema.a.col, F.lit("_"), myschema.a.col)))
 )
 df1.show()
 # :xns
-show_to_file(df1, "docs/snippets/fcol.show.txt")
+show_to_file(df1, "docs/snippets/col.show.txt")
 
 # :snx set-ops-no-subset-missing-col
 df2 = spark.createDataFrame(
