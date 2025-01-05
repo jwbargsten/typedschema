@@ -14,6 +14,7 @@ class Column(str):
     A column in a named schema. It is also a string, so it behaves like a string.
 
     You can call e.g. :func:`~pyspark.sql.functions.col` on it.
+
     .. code-block:: python
 
         import pyspark.sql.functions as F
