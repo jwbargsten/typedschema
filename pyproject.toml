@@ -54,6 +54,10 @@ docs = [
     "myst-parser",
     "sphinx-sitemap",
     "setuptools_scm",
+    "pydata-sphinx-theme",
+    "sphinx-autodoc-typehints",
+    "myst-nb",
+
 ]
 
 all = [

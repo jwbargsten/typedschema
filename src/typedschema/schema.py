@@ -8,6 +8,7 @@ from typing import (
 )
 from typing_extensions import Self
 
+from pyspark.sql import DataFrame
 from pyspark.sql.types import StructField, StructType
 from .structfield import sf_apply, sf_without_metadata, sf_with_lc_colname
 
@@ -25,7 +26,13 @@ def _unpack_schema(s):
         return s.fields
     if isinstance(s, StructType):
         return s.fields
-    return list(iter(s))
+    if isinstance(s, DataFrame):
+        return s.schema.fields
+    fields = list(iter(s))
+
+    if not all(isinstance(field, StructField) for field in fields):
+        raise ValueError("supplied schema type is not supported")
+    return fields
 
 
 RESERVED_FIELDS = [
@@ -76,10 +83,11 @@ class Schema(metaclass=MetaSchema):
 
     :param case_sensitive: are the columns/fields case sensitive?
     :param meta: key-value entries that are related to the schema. An example would be the table name.
-    Actually, because the table name is needed quite frequently, the ``self.table_name``
-    property is a shortcut for ``meta["name"]``.
+        Actually, because the table name is needed quite frequently, the ``self.table_name``
+        property is a shortcut for ``meta["name"]``.
 
     Examples:
+
     >>> from pyspark.sql.types import StructField, StringType, StringType
     >>> from typedschema import Schema, Column
     >>>
@@ -123,7 +131,7 @@ class Schema(metaclass=MetaSchema):
     meta: dict[Hashable, Any]
     case_sensitive: bool
 
-    def __init__(self, *, case_sensitive: bool | None = None, meta:None | dict[Hashable, Any] = None):
+    def __init__(self, *, case_sensitive: bool | None = None, meta: None | dict[Hashable, Any] = None):
         self._colmap = {
             **{attr.lower(): col for attr, col in self._attr_col_map.items()},
             **{attr: col for attr, col in self._attr_col_map.items()},
@@ -203,7 +211,7 @@ class Schema(metaclass=MetaSchema):
         except AttributeError as ex:
             raise KeyError(key) from ex
 
-    def isequal(self, other: Sequence[StructField] | Self | StructType, strict_null=True):
+    def isequal(self, other: Sequence[StructField] | Self | StructType | DataFrame, strict_null=True):
         other_cols = _unpack_schema(other)
         return sf_apply(
             self.fields,
@@ -216,7 +224,7 @@ class Schema(metaclass=MetaSchema):
     def __eq__(self, other: Sequence[StructField] | Self | StructType):
         return self.isequal(other)
 
-    def issubset(self, other: Sequence[StructField] | Self | StructType, strict_null=True):
+    def issubset(self, other: Sequence[StructField] | Self | StructType | DataFrame, strict_null=True):
         other_cols = _unpack_schema(other)
         return sf_apply(
             self.fields,
@@ -229,7 +237,7 @@ class Schema(metaclass=MetaSchema):
     def __le__(self, other: Sequence[StructField] | Self | StructType):
         return self.issubset(other)
 
-    def issuperset(self, other: Sequence[StructField] | Self | StructType, strict_null=True):
+    def issuperset(self, other: Sequence[StructField] | Self | StructType | DataFrame, strict_null=True):
         other_cols = _unpack_schema(other)
         return sf_apply(
             self.fields,
@@ -267,8 +275,8 @@ class Schema(metaclass=MetaSchema):
 
 
 def diff_schemas(
-    a: Sequence[StructField] | StructType | Schema,
-    b: Sequence[StructField] | StructType | Schema,
+    a: Sequence[StructField] | StructType | Schema | DataFrame,
+    b: Sequence[StructField] | StructType | Schema | DataFrame,
 ):
     """
     Diff two schemas
@@ -278,12 +286,21 @@ def diff_schemas(
     :return: a list of tuples
         each tuple has the structure: (diffType, colname of a, colname of b)
         diffType can be
-            ``+``: a is missing this col, b has it extra
-            ``-``: a has this column extra, it is missing in b
-            `` `` (space): no difference
-            ``>`` the col is present in a and b, but the data type differes
-            ``!`` the col is present in a and b, but the nullable constraint differs
-          (a has this col extra),
+
+        ``+``
+            a is missing this col, b has it extra
+
+        ``-``
+            a has this column extra, it is missing in b
+
+        ```(space)```
+            no difference
+
+        ``>``
+            the col is present in a and b, but the data type differes
+
+        ``!``
+            the col is present in a and b, but the nullable constraint differs
     """
     a_fields, b_fields = sf_apply(_unpack_schema(a), _unpack_schema(b), lambda xs, ys: (xs, ys))
 

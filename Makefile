@@ -43,7 +43,6 @@ $(VENV)/init: ## init the virtual environment
 	python3 -m venv $(VENV)
 	touch $@
 
-# (optional) if you have Sphinx-based docs
 docs:
 	cd docs && $(MAKE) html
 

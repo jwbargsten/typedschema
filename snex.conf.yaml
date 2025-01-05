@@ -1,0 +1,20 @@
+default:
+  output_path: "docs/snippets"
+  comment_prefix: "# "
+  lang: python
+  snippet_start: ":snx"
+  snippet_end: ":xns"
+  output_template: "{{{snippet}}}"
+  output_suffix: ".py"
+
+src:
+  root: src
+  glob: "**/*.py"
+
+tests:
+  root: tests
+  glob: "**/*.py"
+
+examples:
+  root: examples
+  glob: "**/*.py"

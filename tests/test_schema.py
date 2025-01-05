@@ -185,6 +185,8 @@ def test_set_ops():
     assert not sa <= cols2
     assert not s <= cols2
     assert s == cols1
+    with pytest.raises(ValueError):
+        s <= [1, 2, 3]
 
 
 def test_set_ops_case_sensitive():

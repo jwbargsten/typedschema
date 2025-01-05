@@ -1,0 +1,6 @@
+root
+ |-- a: long (nullable = false)
+ |-- b: double (nullable = false)
+ |-- c: string (nullable = false)
+ |-- d: date (nullable = false)
+ |-- e: timestamp (nullable = false)

@@ -11,9 +11,23 @@ from pyspark.sql.types import DataType, StructField
 
 class Column(str):
     """
-    A column in a named schema. Behaves like a string, but you can call :func:`pyspark.sql.functions.col` on it.
+    A column in a named schema. It is also a string, so it behaves like a string.
 
-    :param dtype: the :class:`DataType`
+    You can call e.g. :func:`~pyspark.sql.functions.col` on it.
+    .. code-block:: python
+
+        import pyspark.sql.functions as F
+        from typedschema import Column
+
+        name = Column(StringType(), nullable=True)
+
+        F.col(name) # works like a string
+        name.fcol   # also works
+        name.c      # alias for name.fcol -> for the lazy ones
+
+    Common PySpark functions, such as :func:`~Column.cast` or :func:`~Column.dtype`, are aliased.
+
+    :param dtype: the :class:`~pyspark.sql.types.DataType`
     :param nullable: is it nullable?
     :param meta: meta information
     :param name: usually not needed, only for name classes. See :class:`Schema` for more info
@@ -65,6 +79,11 @@ class Column(str):
         Transform the column to a pyspark column
         """
         return F.col(self)
+
+    @property
+    def c(self) -> PysparkColumn:
+        """Alias for as fcol"""
+        return self.fcol
 
     def cast(self, dtype: str | DataType) -> PysparkColumn:
         """
