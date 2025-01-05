@@ -314,7 +314,7 @@ def diff_schemas(
     common = a_cols_ks & b_cols_ks
 
     common_diff = []
-    for c in common:
+    for c in sorted(common):
         a_col = a_cols[c]
         b_col = b_cols[c]
         diff_char = " "
@@ -325,7 +325,7 @@ def diff_schemas(
         common_diff.append((diff_char, a_col, b_col))
 
     return (
-        [("-", a_cols[c], None) for c in a_cols_uniq]
-        + [("+", None, b_cols[c]) for c in b_cols_uniq]
+        [("-", a_cols[c], None) for c in sorted(a_cols_uniq)]
+        + [("+", None, b_cols[c]) for c in sorted(b_cols_uniq)]
         + common_diff
     )
